@@ -1,0 +1,21 @@
+{
+  "name": "spaza-app",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lhita/spaza-app.git"
+  },
+  "author": "Nolitha",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Lhita/spaza-app/issues"
+  },
+  "dependencies": {
+    "express": "~4.13.3"
+  }
+}
