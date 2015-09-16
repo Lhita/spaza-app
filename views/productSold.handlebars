@@ -1,0 +1,19 @@
+<h2>sold Products</h2>
+<div class="container">
+<table class="col-xs-12">
+	<thead>
+		<th>Products</th>
+		<th>Amount</th>
+	</thead>
+{{#each product}}
+
+<tr>
+
+	<td>{{@key}} </td>
+	<td>{{this}}</td>
+</tr>
+
+{{/each}}
+
+</table>
+</div>

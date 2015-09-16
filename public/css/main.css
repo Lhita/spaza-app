@@ -1,0 +1,129 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: #FFA39C;
+  background-color: 
+}
+
+h1 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+}
+.nav ul {
+  list-style: none;
+  background-color: #444;
+  padding: 0;
+  margin: 0;
+   width: 185px;
+
+}
+
+.nav li {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em;
+  text-align: left;
+  
+
+}
+
+.nav a {
+  text-decoration: none;
+  color: #fff;
+  display: inline;
+  padding-left: 15px;
+  border-bottom: 1px solid #888;
+  transition: .3s background-color;
+  
+}
+
+.nav a:hover {
+  background-color: #005f5f;
+  margin-right: -5px;
+}
+
+.nav a.active {
+  background-color: #aaa;
+  color: #444;
+  cursor: default;
+
+}
+
+/* Sub Menus */
+.nav li li {
+  font-size: 17px;
+  width: 160px;
+  margin-left: -10px;
+
+
+}
+
+img {
+  margin-bottom: 250px;
+  margin-left: 200px;
+  padding-top: 180px;
+  margin-top: -90px;
+}
+
+table, th, td {
+   border: 1px solid black;
+   border-collapse: collapse;
+   width: 90px;
+   
+
+}
+/*******************************************
+   Style menu for larger screens
+
+   Using 650px (130px each * 5 items), but ems
+   or other values could be used depending on other factors
+********************************************/
+
+@media screen and (min-width: 650px) {
+  .nav li {
+    width: 130px;
+    border-bottom: none;
+   
+    font-size: 1.4em;
+    display: inline-block;
+    margin-right: -4px;
+    height: 120px;
+
+
+  }
+
+  .nav a {
+    border-bottom: none;
+  }
+
+  .nav > ul > li {
+    text-align: left;
+  }
+
+  .nav > ul > li > a {
+    padding-left: 0;
+  }
+
+  /* Sub Menus */
+  .nav li ul {
+    position: absolute;
+    display: none;
+    width: inherit;
+    height: 160px;
+    
+
+  }
+
+  .nav li:hover ul {
+    display: inline;
+    color: blue;
+    width: 160px;
+
+  }
+
+  .nav li ul li {
+    display: inline;
+    width: 180px;
+
+  }
+}

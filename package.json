@@ -1,21 +1,19 @@
 {
-  "name": "spaza-app",
-  "version": "0.0.0",
+  "name": "package.json",
+  "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha"
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "gulp": "^3.9.0",
+    "install": "^0.1.8",
+    "nodemon": "^1.4.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Lhita/spaza-app.git"
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nolitha",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Lhita/spaza-app/issues"
-  },
-  "dependencies": {
-    "express": "~4.13.3"
-  }
+  "license": "ISC"
 }
