@@ -35,7 +35,7 @@ it('should return the total number of items sold', function(){
             assert.equal(47, product['Iwisa Pap 5kg']);
             assert.equal(98, product['Top Class Soy Mince']);
             assert.equal(26, product['Shampoo 1 litre']);
-			      assert.equal(50, product['Soap Bar']);
+	    assert.equal(50, product['Soap Bar']);
             assert.equal(114, product['Bananas - loose']);
             assert.equal(114, product['Apples - loose']);
             assert.equal(172, product['Mixed Sweets 5s']);
