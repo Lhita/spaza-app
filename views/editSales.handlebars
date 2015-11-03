@@ -1,0 +1,20 @@
+<h1>EditSales</h1>
+
+{{#data}}
+<form action="/sales/update/{{id}}" method="POST">
+
+	
+	Sales_date : <input type="date" name="sales_date" value="{{sales_date}}">
+	Sales_price : <input type="number" name="sales_price" value="{{sales_price}}">
+	Quantity : <input type="number" name="qty" value="{{qty}}">
+{{/data}}
+
+<select name ="product_id">
+	{{#each products}}
+		<option value ="{{id}}">{{product_name}}</option>
+	{{/each}}
+</select>
+
+	<input type="submit">
+</form>
+

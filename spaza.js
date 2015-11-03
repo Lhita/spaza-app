@@ -5,17 +5,14 @@ var express = require('express'),
     mysql = require('mysql'),
     myConnection = require('express-myconnection'),
     bodyParser = require('body-parser'),
-    products = require('./routes/products'),
-    sales = require('./routes/sales'),
-    purchases = require('./routes/purchases');
-    
+    products = require('./routes/products');
 
 var app = express();
 
 var dbOptions = {
       host: 'localhost',
-      user: 'root',
-      password: 'coder123',
+      user: 'green_grocer',
+      password: 'password',
       port: 3306,
       database: 'spaza_app'
 };
@@ -40,7 +37,6 @@ function errorHandler(err, req, res, next) {
 
 //setup the handlers
 app.get('/', products.show);
-//products
 app.get('/products', products.show);
 app.get('/products/edit/:id', products.get);
 app.post('/products/update/:id', products.update);
@@ -48,23 +44,6 @@ app.get('/products/add', products.showAdd);
 app.post('/products/add', products.add);
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/products/delete/:id', products.delete);
-
-//sales handlebars
-
-app.get('/sales', sales.show);
-app.get('/sales/editSales/:id', sales.get);
-app.post('/sales/update/:id', sales.update);
-app.get('/sales/add', sales.showAddSales);
-app.post('/sales/add', sales.add);
-
-app.get('/sales/delete/:id', sales.delete);
-
-//purchases handlebars
-/*app.get('/purchases', purchases.show);
-//app.get('//sales/editSales/:id', sales.get);
-//app.post('/sales/update/:id', sales.update);
-app.get('/purchases/add', purchases.showAdd);*/
-//app.post('/purchases/add', purchases.add);
 
 app.use(errorHandler);
 

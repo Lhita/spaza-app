@@ -1,0 +1,54 @@
+<h1>Add Purchases</h1>
+
+<form action ="/purchases/add" method ="POST">
+  <select name="product_id">
+
+    {{#products}}
+     <option value="{{id}}">{{product_name}}</option>
+    {{/products}}
+   </select>
+  cost_price : <input type="number" name="cost_price"></input>
+  cost_date : <input type="date" name="cost_date"></input>
+  Quantity:<input type="number" name="qty"></input>
+  Quantity:<input type="number" name="qty"></input>
+
+
+   
+
+  
+	<input type ="submit">
+</form>
+<h1>Stock Records</h1> 
+<div class="container">
+<table class="col-xs-10">
+<tr><thead>
+
+	<th><h2>Product Name</h2></th>
+	<th><h2>Price</h2></th>
+    <th><h2>Cost date<h2></th>
+    <th><h2>Quantity</h2></th>
+    <th><h2>Shop</h2></th>
+    <th><h2>Cost</h2></th>
+
+
+
+</tr></thead>
+<tbody>
+     {{#products}}
+<tr>
+
+<td>{{product_name}}</td>
+<td>R{{cost_price}}</td>
+<td>{{cost_date}}</td>
+<th><h2>Shop<h2></th>
+<td>{{qty}}</td>
+
+
+<td> <a href="/purchases/editPurchases/{{id}}">Edit</a>
+     <a href="/sales/delete/{{id}}">Delete</a>
+</td>
+</tr>
+{{/products}}
+</tbody>
+</table>
+</div>

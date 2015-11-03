@@ -7,7 +7,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     products = require('./routes/products'),
     sales = require('./routes/sales'),
-    purchases = require('./routes/purchases');
+    purchases = require('./routes/purchases'),
     
 
 var app = express();
@@ -52,19 +52,22 @@ app.get('/products/delete/:id', products.delete);
 //sales handlebars
 
 app.get('/sales', sales.show);
+
+//app.get('/addSales', sales.addSales);
 app.get('/sales/editSales/:id', sales.get);
 app.post('/sales/update/:id', sales.update);
-app.get('/sales/add', sales.showAddSales);
+app.get('/sales/add', sales.showAdd);
 app.post('/sales/add', sales.add);
 
 app.get('/sales/delete/:id', sales.delete);
 
 //purchases handlebars
-/*app.get('/purchases', purchases.show);
+app.get('/purchases', purchases.show);
 //app.get('//sales/editSales/:id', sales.get);
 //app.post('/sales/update/:id', sales.update);
-app.get('/purchases/add', purchases.showAdd);*/
+app.get('/purchases/add', purchases.showAdd);
 //app.post('/purchases/add', purchases.add);
+
 
 app.use(errorHandler);
 

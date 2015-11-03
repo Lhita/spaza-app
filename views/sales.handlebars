@@ -1,0 +1,54 @@
+<h1>Add Sales</h1>
+
+<form action ="/sales/add" method ="POST">
+  
+  <select name="product_id">
+
+    {{#products}}
+     <option value="{{id}}">{{product_name}}</option>
+    {{/products}}
+   </select>
+
+  sale_date : <input type="date" name="sales_date"></input>
+  sale_price : <input type="number" name="sales_price"></input>
+  Quantity:<input type="number" name="qty"></input>
+  
+	<input type ="submit">
+
+</form>
+
+
+
+<h1>Sales Records</h1> 
+
+<div class="container">
+  <table class="col-xs-10">
+    <tr>
+      <thead>
+        <th><h2>Product Name</h2></th>
+        <th><h2>Price</h2></th>
+        <th><h2>Sales date<h2></th>
+        <th><h2>Quantity</h2></th>
+      </thead>
+    </tr>
+
+    <tbody>
+      {{#sales}}
+        <tr>
+
+<td>{{product_name}}</td>
+<td>R{{sales_price}}</td>
+<td>{{sales_date}}</td>
+<td>{{qty}}</td>
+
+<td> 
+  <a href="/sales/editSales/{{id}}">Edit</a>
+  <a href="/sales/delete/{{id}}">Delete</a>
+</td>
+
+</tr>
+{{/sales}}
+
+</tbody>
+</table>
+</div>

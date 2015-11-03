@@ -34,21 +34,20 @@
         <li class="about"><a href="#">About</a></li>
 
         <li class=""><a href="#">products</a>
-          <!--<ul>
+          <ul>
             <li><a href="product">products</a></li>
             <li><a href="/product/products">soldproducts</a></li><br>
             <li><a href="/product/mostpopularItems">popularproducts</a></li><br>
             <li><a href="/product/leastPopularItems">leastpopularproduct</a></li><br>
-          </ul> -->
+          </ul>
         </li>
         <li class="categories"><a href="#">Categories</a>
-         <!-- <ul>
+          <ul>
             <li><a href="/product/mostPopularCategory">popular category</a></li>
             <li><a href="/product/leastPopularItems">least popular product</a></li>
             <li><a href="/product/leastPopularCategory">leastpopularCategory</a></li>
-          </ul> -->
+          </ul>
         </li>
-        <li class="sales"><a href="#">Sales</a></li>
       </ul>
         <!-- /.container -->
     </div>
@@ -56,7 +55,8 @@
 </header>
     <!-- jQuery -->
     
-  
+   <!--<img src="http://www.checkers.co.za/content/dam/checkerssouthafrica/websites/checkerssouthafrica/Home/Header/specials-card.jpg"
+-->
   <div id ="container">
     {{{body}}}
   </div>

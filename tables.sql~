@@ -14,8 +14,8 @@ CREATE TABLE products (
 	product_name VARCHAR(50),
 	category_id int,
 	primary key(id),
-	FOREIGN KEY(category_id) REFERENCES categories(id)
-	CONSTRAINT uc_product_name UNIQUE (product_name) 
+	FOREIGN KEY(category_id) REFERENCES categories(id),
+	--CONSTRAINT uc_product_name UNIQUE (product_name)
 	);
 
 
@@ -35,7 +35,7 @@ CREATE TABLE sales (
 DROP TABLE IF EXISTS `suppliers`;
 CREATE TABLE suppliers (
 	id int NOT NULL AUTO_INCREMENT,
-	supplier_name VARCHAR(50)NOT NULL,
+	supplier_name VARCHAR()NOT N50ULL,
 	primary key(id)
 	);
 

@@ -1,27 +1,42 @@
 body {
   margin: 0;
   padding: 0;
-  background: #FFA39C;
-  background-color: 
+  background:#4D7C8C;
+  
 }
 
-h1 {
-  text-align: center;
-  font-weight: bold;
-  font-size: 50px;
+/*#container{
+  margin: 0 auto;
+  width: 80%;
+  background-color: #15b24e;
+  margin-top: 3em;
+  padding: 5em;
+}*/
+
+#add-sales {
+  font-size: 120px;
+  border : 1px solid;
+  width: 50%;
+  padding: 15px;
 }
 
-h2 {
-  font-size: 50px;
-  text-align: center;
-  margin-top: -120px;
+input[type=text] {
+  margin: 10px;
+  padding: 10px;
+  font-size: 20px;
 }
+
+input[type=submit] {
+  padding: 13px;
+  border: 2px solid #b3b3b3;
+;
+};
+
 .nav ul {
   list-style: none;
-  background-color: #444;
   padding: 0;
   margin: 0;
-   width: 185px;
+  width: 185px;
 
 }
 
@@ -74,13 +89,13 @@ img {
 table, th, td {
    border: 1px solid black;
    border-collapse: collapse;
-   width: 100px;
-   font-size: 30px;
+   width: 900px;
+   font-size: 20px;
 }
 
-table {
+/*table {
   margin-left: 45px;
-}
+}*/
 /*******************************************
  
 
