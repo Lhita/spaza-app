@@ -1,10 +1,17 @@
 body {
   margin: 0;
   padding: 0;
-  background:#4D7C8C;
+  background:#abcca3;
   
 }
+#add-products {
+  font-size: 120px;
+  border : 1px solid;
+  width: 50%;
+  padding: 15px;
 
+
+}
 /*#container{
   margin: 0 auto;
   width: 80%;
@@ -29,6 +36,8 @@ input[type=text] {
 input[type=submit] {
   padding: 13px;
   border: 2px solid #b3b3b3;
+  border-radius: 2px;
+  background-color: grey;
 ;
 };
 
@@ -47,13 +56,13 @@ input[type=submit] {
   
 
 }
-
+/*nav bar*/
 .nav a {
   text-decoration: none;
   color: #fff;
   display: inline;
   padding-left: 15px;
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid #343434;
   transition: .3s background-color;
   
 }
@@ -61,6 +70,7 @@ input[type=submit] {
 .nav a:hover {
   background-color: #005f5f;
   margin-right: -5px;
+  color: red;
 }
 
 .nav a.active {
@@ -109,7 +119,6 @@ table, th, td {
   .nav li {
     width: 130px;
     border-bottom: none;
-   
     font-size: 1.4em;
     display: inline-block;
     margin-right: -4px;
@@ -142,7 +151,7 @@ table, th, td {
 
   .nav li:hover ul {
     display: inline;
-    color: blue;
+    color: red;
     width: 160px;
 
   }

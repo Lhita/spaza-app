@@ -1,4 +1,5 @@
 
+
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
@@ -27,7 +28,7 @@ exports.add = function (req, res, next) {
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
 		product_name : input.product_name,
-      		category_id : input.category_id
+      	category_id : input.category_id
   	};
 		connection.query('insert into products set ?', data, function(err, results) {
   		if (err) return next(err);
@@ -49,9 +50,9 @@ exports.get = function(req, res, next){
 exports.update = function(req, res, next){
 
 	var data = JSON.parse(JSON.stringify(req.body));
-  var id = req.params.id;
-  req.getConnection(function(err, connection){
-			connection.query('UPDATE products SET ? WHERE id = ?', [data, id], function(err, rows){
+  	var id = req.params.id;
+  	req.getConnection(function(err, connection){
+		connection.query('UPDATE products SET ? WHERE id = ?', [data, id], function(err, rows){
     			if (err) next(err);
           res.redirect('/products');
     		});

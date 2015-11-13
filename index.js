@@ -50,7 +50,6 @@ app.post('/products/add', products.add);
 app.get('/products/delete/:id', products.delete);
 
 //sales handlebars
-
 app.get('/sales', sales.show);
 app.get('/sales/editSales/:id', sales.get);
 app.post('/sales/update/:id', sales.update);
@@ -60,11 +59,14 @@ app.post('/sales/add', sales.add);
 app.get('/sales/delete/:id', sales.delete);
 
 //purchases handlebars
-/*app.get('/purchases', purchases.show);
-//app.get('//sales/editSales/:id', sales.get);
-//app.post('/sales/update/:id', sales.update);
-app.get('/purchases/add', purchases.showAdd);*/
-//app.post('/purchases/add', purchases.add);
+app.get('/purchases', purchases.show);
+app.get('/purchases/editPurchases/:id', purchases.get);
+app.post('/purchases/update/:id', purchases.update);
+app.get('/purchases/add', purchases.showAddPurchases);
+app.post('/purchases/add', purchases.add); 
+
+app.get('/purchases/delete/:id', purchases.delete);  
+
 
 app.use(errorHandler);
 

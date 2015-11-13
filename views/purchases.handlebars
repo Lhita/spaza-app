@@ -1,54 +1,67 @@
 <h1>Add Purchases</h1>
 
 <form action ="/purchases/add" method ="POST">
+  
   <select name="product_id">
 
     {{#products}}
-     <option value="{{id}}">{{product_name}}</option>
+    <option value="{{id}}">{{product_name}}</option>
     {{/products}}
-   </select>
-  cost_price : <input type="number" name="cost_price"></input>
-  cost_date : <input type="date" name="cost_date"></input>
-  Quantity:<input type="number" name="qty"></input>
-  Quantity:<input type="number" name="qty"></input>
+  </select>
 
+  Date : <input type ="date" name ="stock_date"></input>
+  Price : <input type ="number" name ="cost_price"></input>
+  Quantity: <input type ="number" name ="Qty"></input>
 
-   
+  <select name="supplier_id">
 
-  
+    {{#suppliers}}
+     <option value="{{id}}">{{supplier_name}}</option>
+    {{/suppliers}}
+  </select>
+
 	<input type ="submit">
+
 </form>
-<h1>Stock Records</h1> 
-<div class="container">
-<table class="col-xs-10">
-<tr><thead>
-
-	<th><h2>Product Name</h2></th>
-	<th><h2>Price</h2></th>
-    <th><h2>Cost date<h2></th>
-    <th><h2>Quantity</h2></th>
-    <th><h2>Shop</h2></th>
-    <th><h2>Cost</h2></th>
 
 
 
-</tr></thead>
-<tbody>
-     {{#products}}
-<tr>
+<h1>Purchases Records</h1> 
 
-<td>{{product_name}}</td>
-<td>R{{cost_price}}</td>
-<td>{{cost_date}}</td>
-<th><h2>Shop<h2></th>
-<td>{{qty}}</td>
+<div class="container-fluid">
+  <table class="col-xs-10">
+    <tr>
+      <thead>
+        <th><h2>Product Name</h2></th>
+        <th><h2>Stock_date<h2></th>
+        <th><h2>Price</h2></th>
+        <th><h2>Quantity</h2></th> 
+        <th><h2>Supplier_name</h2></th> 
 
+        
 
-<td> <a href="/purchases/editPurchases/{{id}}">Edit</a>
-     <a href="/sales/delete/{{id}}">Delete</a>
-</td>
-</tr>
-{{/products}}
-</tbody>
-</table>
+      </thead>
+    </tr>
+
+    <tbody>
+
+      {{#purchases}}
+      <tr>
+        <td>{{product_name}}</td>
+        <td>{{stock_date}}</td>
+        <td>{{cost_price}}</td>
+        <td>{{Qty}}</td>
+        <td>{{supplier_name}}</td>
+
+        
+
+          <td>
+          <a href="/purchases/editPurchases/{{id}}">Edit</a>
+          <a href="/purchases/delete/{{id}}">Delete</a>
+        </td>
+      </tr>
+      {{/purchases}}
+
+    </tbody>
+  </table>
 </div>

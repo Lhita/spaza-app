@@ -64,6 +64,7 @@ exports.get = function(req, res, next){
 
 	});
 };
+
 exports.update = function(req, res, next){
 
 	var data = JSON.parse(JSON.stringify(req.body));
