@@ -39,7 +39,11 @@ function errorHandler(err, req, res, next) {
 }
 
 //setup the handlers
-app.get('/', products.show);
+app.get('/', function(req, res){
+     res.render('index');
+ });
+
+
 //products
 app.get('/products', products.show);
 app.get('/products/edit/:id', products.get);

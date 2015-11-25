@@ -1,6 +1,103 @@
 body {
   margin: 0;
   padding: 0;
+  background:#4D7C8C;
+  
+}
+
+/*#container{
+  margin: 0 auto;
+  width: 80%;
+  background-color: #15b24e;
+  margin-top: 3em;
+  padding: 5em;
+}*/
+
+#add-sales {
+  font-size: 120px;
+  border : 1px solid;
+  width: 50%;
+  padding: 15px;
+}
+
+input[type=text] {
+  margin: 10px;
+  padding: 10px;
+  font-size: 20px;
+}
+
+input[type=submit] {
+  padding: 13px;
+  border: 2px solid #b3b3b3;
+;
+};
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 185px;
+
+}
+
+.nav li {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.2em;
+  text-align: left;
+  
+
+}
+
+.nav a {
+  text-decoration: none;
+  color: #fff;
+  display: inline;
+  padding-left: 15px;
+  border-bottom: 1px solid #888;
+  transition: .3s background-color;
+  
+}
+
+.nav a:hover {
+  background-color: #005f5f;
+  margin-right: -5px;
+}
+
+.nav a.active {
+  background-color: #aaa;
+  color: #444;
+  cursor: default;
+
+}
+
+/* Sub Menus */
+.nav li li {
+  font-size: 17px;
+  width: 160px;
+  margin-left: -10px;
+
+
+}
+
+img {
+  margin-bottom: 250px;
+  margin-left: 200px;
+  padding-top: 180px;
+  margin-top: -90px;
+}
+
+table, th, td {
+   border: 1px solid black;
+   border-collapse: collapse;
+   width: 900px;
+   font-size: 20px;
+}
+
+/*table {
+  margin-left: 45px;
+}*/body {
+  margin: 0;
+  padding: 0;
   background:#abcca3;
   
 }
@@ -53,6 +150,7 @@ input[type=submit] {
   font-family: 'Oswald', sans-serif;
   font-size: 1.2em;
   text-align: left;
+  display: inline;
   
 
 }
@@ -120,9 +218,10 @@ table, th, td {
     width: 130px;
     border-bottom: none;
     font-size: 1.4em;
-    display: inline-block;
+    display: inline;
     margin-right: -4px;
     height: 120px;
+    display: inline;
 
 
   }

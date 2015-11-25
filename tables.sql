@@ -14,7 +14,7 @@ CREATE TABLE products (
 	product_name VARCHAR(50),
 	category_id int,
 	primary key(id),
-	FOREIGN KEY(category_id) REFERENCES categories(id)
+	FOREIGN KEY(category_id) REFERENCES categories(id),
 	CONSTRAINT uc_product_name UNIQUE (product_name) 
 	);
 
