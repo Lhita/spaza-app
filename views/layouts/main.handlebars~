@@ -8,9 +8,10 @@
 
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.css">
 
 		<!-- Latest compiled and minified JavaScript -->
-       <link rel="stylesheet" type="text/css" href="public/css/main.css"> 
+       <link rel="stylesheet" type="text/css" href="/css/main.css"> 
       
 
 
@@ -30,9 +31,9 @@
   <header>
         <h1>Nelisa Spazza-shop</h1>
    <div class="nav">
-        <li class="home"><a href="/">Home</a></li>
+        <!--<li class="home"><a href="/">Home</a></li> -->
 
-        <li class="products"><a href="/products">products</a></li>
+        <li class="products"><a href="/products">Products</a></li>
        <!-- <li class="categories"><a href="#">Categories</a>
          <!-- <ul>
             <li><a href="/product/mostPopularCategory">popular category</a></li>
@@ -41,6 +42,7 @@
           </ul> 
         </li> -->
       <li class="sales"><a href="/sales">Sales</a></li>
+      <li class="purchases"><a href="/purchases">Purchases</a></li>
      
         <!-- /.container -->
     </div>
@@ -59,5 +61,3 @@
 
 </body>
 </html>
-
-<!--template-->

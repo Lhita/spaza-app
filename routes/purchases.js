@@ -60,6 +60,7 @@ exports.get = function(req, res, next) {
 
 					res.render('editPurchases',{page_title:"Edit Customers - Node.js", 
 					data : rows[0],
+					purchases :results
 					products : products,
 					suppliers : suppliers
 					});
