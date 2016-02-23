@@ -4,12 +4,8 @@ var express = require('express'),
     exphbs  = require('express-handlebars'),
     mysql = require('mysql'),
     myConnection = require('express-myconnection'),
-    bodyParser = require('body-parser'),
-    products = require('./routes/products'),
-    sales = require('./routes/sales'),
-    purchases = require('./routes/purchases');
+    bodyParser = require('body-parser');
     
-
 var app = express();
 
 var dbOptions = {
@@ -31,7 +27,14 @@ app.use(myConnection(mysql, dbOptions, 'single'));
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+
+var products = require('./routes/products'),
+    sales = require('./routes/sales'),
+    purchases = require('./routes/purchases'),
+    categories = require('./routes/categories'),
+   
+    suppliers = require('./routes/suppliers');
 
 function errorHandler(err, req, res, next) {
   res.status(500);
@@ -40,7 +43,7 @@ function errorHandler(err, req, res, next) {
 
 //setup the handlers
 app.get('/', function(req, res){
-     res.render('index');
+     res.render('home1');
  });
 
 
@@ -70,6 +73,26 @@ app.get('/purchases/add', purchases.showAddPurchases);
 app.post('/purchases/add', purchases.add); 
 
 app.get('/purchases/delete/:id', purchases.delete);  
+
+//category handlebars
+app.get('/categories', categories.show);
+app.get('/categories/editCategories/:id', categories.get);
+app.post('/categories/update/:id', categories.update);
+app.get('/categories/add', categories.showAddCategories);
+app.post('/categories/add', categories.add);
+
+app.get('/categories/delete/:id', categories.delete);
+app.get('/categories/popularCat', categories.popularCat);
+app.get('/categories/leastCategory', categories.leastCategory);
+
+//Suppliers handlebars
+app.get('/suppliers', suppliers.show);
+app.get('/suppliers/editSuppliers/:id', suppliers.get);
+app.post('/suppliers/update/:id', suppliers.update);
+app.get('suppliers/add', suppliers.showAddSuppliers);
+app.post('/suppliers/add', suppliers.add);
+
+app.get('/suppliers/delete/:id', suppliers.delete);
 
 
 app.use(errorHandler);

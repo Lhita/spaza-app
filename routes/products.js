@@ -1,5 +1,4 @@
 
-
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
@@ -17,10 +16,10 @@ exports.show = function (req, res, next) {
 exports.showAdd = function(req, res){
 	req.getConnection(function(err, connection){
 		connection.query('SELECT * FROM categories', function(err, categories) {
-	res.render('add', {categories:categories});
-});
+			res.render('add', {categories:categories});
+		});
 	});
-}
+};
 
 exports.add = function (req, res, next) {
 	req.getConnection(function(err, connection){

@@ -3530,6 +3530,9 @@ tbody.collapse.in {
   right: 0;
   left: auto;
 }
+.nav {
+  display: inline;
+}
 .dropup .caret,
 .navbar-fixed-bottom .dropdown .caret {
   content: "";
@@ -3877,15 +3880,16 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav {
   padding-left: 0;
   margin-bottom: 0;
-  list-style: none;
+ display: inline;
 }
 .nav > li {
   position: relative;
-  display: block;
+  display: inline;
+  float: left;
 }
 .nav > li > a {
   position: relative;
-  display: block;
+  display: inline;
   padding: 10px 15px;
 }
 .nav > li > a:hover,
@@ -3984,7 +3988,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #fff;
   }
 }
 .nav-pills > li {

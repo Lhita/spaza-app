@@ -1,0 +1,39 @@
+<h1>Add</h1>
+
+<form action="/categories/add" method="POST">
+  category_name : <input type="text" name="category_name" value="{{category_name}}">
+  <input type="submit">
+  <p><a href="/">Go back</a></p>
+</form>
+
+
+
+<h1>Categories</h1> 
+
+<div class="container">
+  <table class="col-xs-10">
+    <tr>
+      <thead>
+        <th><h2>Category Name</h2></th>
+      </thead>
+    </tr>
+
+    <tbody>
+      {{#categories}}
+        <tr>
+
+<td>{{category_name}}</td>
+
+
+
+<td> 
+  <a href="/categories/editCategories/{{id}}">Edit</a>
+  <a href="/categories/delete/{{id}}">Delete</a>
+</td>
+
+</tr>
+{{/categories}}
+
+</tbody>
+</table>
+</div>
