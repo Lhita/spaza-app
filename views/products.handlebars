@@ -1,0 +1,39 @@
+<h1>Products</h1>
+<a href="/products/add">Add product</a> <br>
+<!-- <br> -->
+<div class="row">
+
+<p><a href="/">Go back</a></p>
+  <table class="col-xs-7">
+
+    <tr>
+      <thead>
+        <th>Products</th>
+   
+        <th>Edit/Delete</th>
+    </tr>
+      </thead>
+
+<tbody>
+  {{#products}}
+
+  <tr>
+    <td>
+      {{product_name}}
+    </td>
+
+    <td>
+      <a href="/products/edit/{{id}}">Edit</a>
+      <a href="/products/delete/{{id}}">Delete</a>
+    </td>
+
+  </tr>
+  {{/products}}
+ </tbody>
+
+{{#no_products}}
+  <p>No products available yet. Add some above.</p>
+{{/no_products}}
+
+  </table>
+</div>

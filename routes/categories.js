@@ -50,7 +50,7 @@ exports.leastCategory = function(req, res, next) {
 		req.getConnection(function(err, connection) {
 			if (err)
 			return next (err);
-		        connection.query('SELECT categories.category_name, SUM(sales.qty) AS QTY FROM sales INNER JOIN products ON sales.product_id = products.id INNER JOIN categories ON categories.id = products.category_id GROUP BY categories.category_name ORDER BY QTY ASC limit  1;; ',[],function (err, results) {
+		        connection.query('SELECT categories.category_name, SUM(sales.qty) AS QTY FROM sales INNER JOIN products ON sales.product_id = products.id INNER JOIN categories ON categories.id = products.category_id GROUP BY categories.category_name ORDER BY QTY ASC limit 1; ',[],function (err, results) {
 				if (err){
 					//console.log("...." + results.length);
 					return (err);	
@@ -63,7 +63,18 @@ exports.leastCategory = function(req, res, next) {
 	};
 
 
-
+exports.earningsPerCategory = function(req, res, next) {
+	req.getConnection(function(err, connection){
+		if (err)
+			return next (err);
+		connection.query('SELECT categories.category_name, SUM(sales.sales_price * sales.qty)AS earninigs FROM sales INNER JOIN products ON products.id = sales.product_id INNER JOIN categories ON categories.id = products.category_id GROUP BY category_name DESC', [], function(err, results) {
+			if (err) return next(err);
+			res.render('earningsPerCategory', {
+				earningsPerCategory: results
+			});
+		});
+	});
+};
 
 exports.add = function (req, res, next) {
 	req.getConnection(function(err, connection){

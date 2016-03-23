@@ -1,0 +1,21 @@
+<h1>Popular Product</h1>
+
+<div class="container">
+	<table class="col-xs-10">
+		<tr>
+			<thead>
+				<th>Product Name</th>
+				<th>Quantity</th>
+			</thead>
+		</tr>
+
+		<tbody>
+		{{#popularProduct}}
+			<tr>
+				<td>{{product_name}}</td>
+				<td>{{QTY}}</td>
+			</tr>
+		{{/popularProduct}}
+		</tbody>
+	</table>
+</div>

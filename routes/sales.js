@@ -2,7 +2,7 @@ exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
 		
-		connection.query('SELECT sales.id, products.product_name, sales.sales_date, sales.sales_price, sales.qty FROM sales INNER JOIN products ON products.id = sales.product_id ORDER BY sales_date DESC  ', [], function(err, results) {
+		connection.query('SELECT sales.id, products.product_name, DATE_FORMAT(sales.sales_date,"%d/%m/%Y")as sales_date, sales.sales_price, sales.qty FROM sales INNER JOIN products ON products.id = sales.product_id ORDER BY sales_date DESC  ', [], function(err, results) {
         connection.query('SELECT * FROM products',  function(err, products) {
         	console.log(results);
         if (err) 

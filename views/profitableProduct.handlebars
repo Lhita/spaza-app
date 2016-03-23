@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="Profits">
+		<table>
+			<thead>
+				<th>profitable Product</th>
+				<th>profits</th>
+			</thead>
+
+			<tbody>
+				{{#profitsPerProduct}}
+				<tr>
+					<td>{{product_name}}</td>
+					<td>{{category_name}}</td>
+					<td>{{profits}}</td>
+				</tr>
+				{{/profitsPerProduct}}
+			</tbody>
+
+		</table>
+
+</body>
+</html>

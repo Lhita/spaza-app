@@ -5,7 +5,7 @@ exports.show = function (req, res, next) {
 		connection.query('SELECT * from products', [], function(err, results) {
 		console.log(results);
         if (err) return next(err);
-    		res.render( 'home', {
+    		res.render( 'products', {
 					no_products : results.length === 0,
 					products : results
     		});
@@ -17,6 +17,57 @@ exports.showAdd = function(req, res){
 	req.getConnection(function(err, connection){
 		connection.query('SELECT * FROM categories', function(err, categories) {
 			res.render('add', {categories:categories});
+		});
+	});
+};
+ 
+exports.popularProduct = function(req, res, next) {
+	req.getConnection(function(err, connection) {
+		if (err) return next(err);
+		connection.query('SELECT products.product_name, SUM(sales.qty)AS QTY FROM sales INNER JOIN products ON sales.product_id = products.id GROUP BY products.product_name ORDER BY qty DESC LIMIT 1', [],function(err, results) {
+			if (err) return next(err);
+			res.render('popularProduct',{
+				popularProduct: results
+				});
+		  });
+     });
+};
+
+
+exports.leastProduct = function(req, res, next) {
+	req.getConnection(function(err, connection) {
+		if (err) return next(err);
+		connection.query('SELECT products.product_name, SUM(sales.qty)AS qty FROM sales INNER JOIN products ON products.id= sales.product_id  GROUP BY products.product_name ORDER BY qty ASC LIMIT 1', function(err, results) {
+			if (err) return next (err);
+			res.render('leastProduct', {
+				leastProduct:results
+			});
+		});
+	});
+};
+
+
+exports.earningsPerProduct = function(req, res, next) {
+	req.getConnection(function(err, connection){
+		if (err) return next (err);
+		connection.query('SELECT products.product_name, SUM(sales.sales_price * sales.qty) AS EARNINGS from sales INNER JOIN products ON products.id = sales.product_id  GROUP BY product_name DESC', [], function(err, results) {
+			if (err) return next(err);
+			res.render('earningsPerProduct',{
+				earningsPerProduct: results
+			})
+		})
+	})
+}
+
+exports.profitsPerProduct = function(req, res, next) {
+	req.getConnection(function(err, connection){
+		if (err)
+			return next (err);
+		connection.query('SELECT products.product_name, (sales.sales_price - purchases.stock_price) AS profits FROM sales, purchases, products INNER JOIN products ON products.id = sales.product_id GROUP BY product_name ', [], function(err, results) {
+			if (err) return next (err);
+			res.render('profitsPerProduct', {
+				profitsPerProduct: results
+			});
 		});
 	});
 };
