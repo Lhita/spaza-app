@@ -6,7 +6,18 @@ var express = require('express'),
     myConnection = require('express-myconnection'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    passport = require('passport');
+    bcrypt = require('bcrypt');
+
+    var products = require('./routes/products'),
+    sales = require('./routes/sales'),
+    purchases = require('./routes/purchases'),
+    categories = require('./routes/categories'),
+    suppliers = require('./routes/suppliers'),
+    signUp =require('./routes/signUp'),
+    login = require('./routes/login'),
+   // logout = require('.routes/logout'),
+    users = require('./routes/users');
+
     
 var app = express();
 
@@ -22,57 +33,71 @@ var dbOptions = {
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
+app.use(function(req, res, next) {
+  console.log('in the middleware :' + req.path);
+  next();
+});
+
+// var roles = {
+//   Nelisa : 'admim',
+//   Xolani: 'admin',
+//   Mpho: 'customer'
+// };
+
+app.use(session ({secret: 'keyboard cat', saveUninitialized:false,resave: true,coockie: {maxAge: 60000}}))
+
 app.use(express.static(__dirname + '/public'));
 
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
+
+// app.post('/', function(req, res){
+
+// });
+
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
+
 // parse application/json
 app.use(bodyParser.json());
 
-var products = require('./routes/products'),
-    sales = require('./routes/sales'),
-    purchases = require('./routes/purchases'),
-    categories = require('./routes/categories'),
-    suppliers = require('./routes/suppliers'),
-    signUp =require('./routes/signUp'),
-    login = require('./routes/login'),
-   // logout = require('.routes/logout'),
-    users = require('./routes/users');
+var checkUser = function(req, res, next){
+  if(req.session.user){
+  return next();
+}
+  res.redirect('/');
+};
 
 
 function errorHandler(err, req, res, next) {
   res.status(500);
   res.render('error', { error: err });
-}
+};
 
-
-app.post('/signUp', signUp.signUp);
-app.get('/signUp', function(err, res){
+app.get('/', function(req, res) {
   res.render('login', {
-    layout: false,
+      layout :false,
   });
 });
 
+app.get("/login", function(req, res){
+    res.render("home", {});
+});
 
 app.post('/login', login.login);
-app.get('/login', function(err, res) {
-  //console.log(log in successfull);
+
+app.get('/signUp', function(req, res){
   res.render('signUp', {
-    layout: false,
-  })
-})
+    layout :false,
+  });
+});
 
+app.post('/signUp', signUp.signUp);
 
-//app.get('/', logout.logout);
-//setup the handlers
-app.get('/', function(req, res){
-     res.render('home');
- });
-
-
-//middleware
+app.get('/logout', function(req, res){
+  delete req.session.user;
+  res.redirect('/');
+});
 
 
 
@@ -82,10 +107,8 @@ app.get('/products/edit/:id', products.get);
 app.post('/products/update/:id', products.update);
 app.get('/products/add', products.showAdd);
 app.post('/products/add', products.add);
-
 //this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/products/delete/:id', products.delete);
-
 app.get('/products/popularProduct', products.popularProduct);
 app.get('/products/leastProduct', products.leastProduct);
 app.get('/products/earningsPerProduct', products.earningsPerProduct);
@@ -131,13 +154,12 @@ app.post('/suppliers/add', suppliers.add);
 app.get('/suppliers/delete/:id', suppliers.delete);
 
 app.get('/users', users.showUsers);
+
+
 //app.get('/users/editUsers/:id', users.get);
 //app.post('/users/update/:id', users.update);
 
 //app.get('users/delete/:id', users.delete);
-
-
-
 
 app.use(errorHandler);
 

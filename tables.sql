@@ -56,8 +56,10 @@ CREATE TABLE purchases (
 DROP TABLE IF EXISTS 'users'; 
 CREATE TABLE users ( 
 	id int NOT NULL AUTO_INCREMENT ,
-	username VARCHAR(100) NOT NULL default "",
-	password VARCHAR(100) NOT NULL default "",
+	username VARCHAR(100) NOT NULL default '',
+	password VARCHAR(100) NOT NULL default '',
+	UNIQUE KEY (username),
+	roles VARCHAR(100) NOT NULL,
 	primary key(id)
 );
 

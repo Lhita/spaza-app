@@ -1,10 +1,17 @@
-  <!-- <div class="intro-lead-in"><u>Welcome To Nelisa Spaza Shop!</u></div>
+  <div class="intro-lead-in"><u>Welcome To Nelisa Spaza Shop!</u></div>
 
-      <h1>Wanna get in ?</h1>
-         <form>
-            <input type="textbox" name="username" class="box1" placeholder="username"/> <br> <br>
-            <input type="textbox" name="password" placeholder="password" class="box2"><br><br>
-            <input type="submit" value="Login" class="login-button">
-        </form>
-        <p>Don't have an account ? <a href="/login">Sing Up</a> now.</p>
-        -->
+
+
+{{#if user}}
+    Hello, {{user.name}}
+{{/if}}
+
+{{user.is_admin}}
+
+{{# if user.is_admin}}
+Welcome admin user!
+
+{{/if}}
+
+<a href="/logout">Logout</a>
+ 

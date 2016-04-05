@@ -1,3 +1,5 @@
+var bcrypt = require('bcrypt');
+
 exports.signUp = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) 
@@ -5,11 +7,23 @@ exports.signUp = function (req, res, next) {
 		var input = JSON.parse(JSON.stringify(req.body));
 		var data = {
 		username : input.username,
-      	password : input.password,
-  	};
-		connection.query('insert into users set ?', data, function(err, results) {
-  		if (err) return next(err);
-			res.redirect('/');
+		roles: 'admin',
+      	  	};
+
+      	bcrypt.genSalt(10, function(err, salt) {
+    		bcrypt.hash("password", salt, function(err, hash) {
+       		 	// Store the hash
+        		data.password = hash;
+
+				connection.query('insert into users set ?', data, function(err, results) {
+  					if (err){
+						res.redirect('/');
+					}else{
+						res.redirect('/login');
+					}
+
+				});
+			});
 		});
-	});
-}; 
+    });
+};
