@@ -1,11 +1,15 @@
-<h1>Add</h1>
+<!-- <h1>Add</h1> -->
 
-<form action="/categories/add" method="POST">
+<!-- <form action="/categories/add" method="POST">
   category_name : <input type="text" name="category_name" value="{{category_name}}">
   <input type="submit">
   <p><a href="/">Go back</a></p>
-</form>
+</form> -->
 
+<form action="/categories/search" method="POST">
+  <input type="text" class="form-control" id="" placeholder="search" name="searchValue">
+  <button>search</button>
+</form>
 
 
 <h1>Categories</h1> 
@@ -37,3 +41,4 @@
 </tbody>
 </table>
 </div>
+<a href="/categories"><button>Show All Categories</button></a>

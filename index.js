@@ -137,6 +137,7 @@ app.post('/purchases/add', purchases.add);
 app.get('/purchases/delete/:id', purchases.delete);  
 
 //category handlebars
+app.post('/categories/search', categories.search);
 app.get('/categories', categories.show);
 app.get('/categories/editCategories/:id', categories.get);
 app.post('/categories/update/:id', categories.update);

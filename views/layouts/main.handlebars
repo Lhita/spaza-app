@@ -87,29 +87,6 @@
                 {{{body}}}
             </div>
     
-<!--<script type="text/javascript">// <![CDATA[
-    $("document").ready(function(){
-      $("#searchterm").keyup(function(){ // 'searchterm' id button 
-        var product_search = $("#searchterm").val();
-        $.getJSON("http://localhost:3000/products/seach",
-        {
-          srsearch: q,
-          action: "query",
-          list: "search",
-          format: "json"
-        },
-        function(data) {
-          $("#results").empty();
-          $("#results").append("Results for <b>" + q + "</b>");
-          $.each(data.query.search, function(i,item){
-            $("#results").append("
-<div><a href='http://localhost:3000/products" + encodeURIComponent(item.title) + "'>" + item.title + "</a>" + item.snippet + "</div>
-");
-          });
-        });
-      });
- 
-// ]]></script> -->
 
     </body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
