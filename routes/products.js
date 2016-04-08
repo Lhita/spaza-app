@@ -13,6 +13,9 @@ exports.show = function (req, res, next) {
 	});
 };
 
+
+
+
 exports.showAdd = function(req, res){
 	req.getConnection(function(err, connection){
 		connection.query('SELECT * FROM categories', function(err, categories) {
@@ -33,6 +36,20 @@ exports.popularProduct = function(req, res, next) {
      });
 };
 
+exports.search = function(req, res, next){
+	req.getConnection(function(err, connection){
+		if(err) return next(err);
+		var searchTerm = '%' + req.body.searchValue + '%';
+		connection.query('SELECT product_name from products where product_name like ?', [searchTerm], function(err, results) {
+			if(err) return next(err);
+		 	
+			res.render('products',{
+				products: results
+				 
+			});
+		});
+	});
+};
 
 exports.leastProduct = function(req, res, next) {
 	req.getConnection(function(err, connection) {

@@ -1,27 +1,33 @@
 <h1>Products</h1>
-<a href="/products/add">Add product</a> <br>
-<!-- <br> -->
-<div class="row">
+
+<form action="/products/search" method="POST">
+  <input type="text" class="form-control" placeholder="Search" id="search" name="searchValue">
+  <input type="submit">
+</form>
+
+<!-- <a href="/products/add">Add product</a> <br> -->
 
 <p><a href="/">Go back</a></p>
-  <table class="col-xs-7">
 
+<div class="container-fluid">
+  <table class="col-xs-7">
     <tr>
       <thead>
-        <th>Products</th>
-   
+        <th>Id</th>
+        <th>Product Name</th>
+        <th>Category Name</th>
+     
         <th>Edit/Delete</th>
-    </tr>
       </thead>
+    </tr>
 
 <tbody>
   {{#products}}
-
   <tr>
-    <td>
-      {{product_name}}
-    </td>
-
+      <td>{{id}}</td>
+      <td>{{product_name}}</td>
+      <td>{{category_name}}</td>
+    
     <td>
       <a href="/products/edit/{{id}}">Edit</a>
       <a href="/products/delete/{{id}}">Delete</a>
@@ -30,6 +36,8 @@
   </tr>
   {{/products}}
  </tbody>
+
+ 
 
 {{#no_products}}
   <p>No products available yet. Add some above.</p>

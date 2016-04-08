@@ -6,7 +6,8 @@ var express = require('express'),
     myConnection = require('express-myconnection'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    bcrypt = require('bcrypt');
+    bcrypt = require('bcrypt'),
+    flash = require('connect-flash');
 
     var products = require('./routes/products'),
     sales = require('./routes/sales'),
@@ -44,16 +45,18 @@ app.use(function(req, res, next) {
 //   Mpho: 'customer'
 // };
 
-app.use(session ({secret: 'keyboard cat', saveUninitialized:false,resave: true,coockie: {maxAge: 60000}}))
+app.use(session ({secret: 'keyboard cat', saveUninitialized:false,resave: true, coockie: {maxAge: 60000}}));
+
+app.use(flash());
 
 app.use(express.static(__dirname + '/public'));
 
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
 
-// app.post('/', function(req, res){
+ app.post('/', function(req, res){
 
-// });
+ });
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -61,30 +64,29 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json());
 
-var checkUser = function(req, res, next){
-  if(req.session.user){
-  return next();
-}
-  res.redirect('/');
-};
+
 
 
 function errorHandler(err, req, res, next) {
   res.status(500);
   res.render('error', { error: err });
-};
+}
+
+
+
+app.get("/login", function(req, res){
+    res.render("home", {});
+});
+
+app.post('/login', function(req, res){
+
+});
 
 app.get('/', function(req, res) {
   res.render('login', {
       layout :false,
   });
 });
-
-app.get("/login", function(req, res){
-    res.render("home", {});
-});
-
-app.post('/login', login.login);
 
 app.get('/signUp', function(req, res){
   res.render('signUp', {
@@ -94,14 +96,15 @@ app.get('/signUp', function(req, res){
 
 app.post('/signUp', signUp.signUp);
 
-app.get('/logout', function(req, res){
-  delete req.session.user;
+
+var checkUser = function(req, res, next){
+  if(req.session.user){
+  return next();
+}
   res.redirect('/');
-});
-
-
-
+};
 //products
+app.post('/products/search', products.search);
 app.get('/products', products.show);
 app.get('/products/edit/:id', products.get);
 app.post('/products/update/:id', products.update);
@@ -113,6 +116,7 @@ app.get('/products/popularProduct', products.popularProduct);
 app.get('/products/leastProduct', products.leastProduct);
 app.get('/products/earningsPerProduct', products.earningsPerProduct);
 app.get('/products/profitsPerProduct', products.profitsPerProduct);
+//app.get('/products/search', products.search);
 
 //sales handlebars
 app.get('/sales', sales.show);
@@ -154,6 +158,8 @@ app.post('/suppliers/add', suppliers.add);
 app.get('/suppliers/delete/:id', suppliers.delete);
 
 app.get('/users', users.showUsers);
+
+//app.get('/search)
 
 
 //app.get('/users/editUsers/:id', users.get);
