@@ -54,10 +54,7 @@ app.use(express.static(__dirname + '/public'));
 //setup middleware
 app.use(myConnection(mysql, dbOptions, 'single'));
 
- app.post('/', function(req, res){
-
- });
-
+ 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
 
@@ -73,20 +70,17 @@ function errorHandler(err, req, res, next) {
 }
 
 
-
-app.get("/login", function(req, res){
-    res.render("home", {});
-});
-
-app.post('/login', function(req, res){
-
-});
-
 app.get('/', function(req, res) {
   res.render('login', {
       layout :false,
   });
 });
+
+app.post('/login', login.login);
+
+// app.get("/login", function(req, res){
+//     res.render("home", {});
+// });
 
 app.get('/signUp', function(req, res){
   res.render('signUp', {
@@ -97,12 +91,22 @@ app.get('/signUp', function(req, res){
 app.post('/signUp', signUp.signUp);
 
 
-var checkUser = function(req, res, next){
-  if(req.session.user){
-  return next();
-}
+// var checkUser = function(req, res, next){
+//   if(req.session.user){
+//   return next();
+// }
+//   res.redirect('/');
+// };
+
+app.get("/home", function(req, res){
+    res.render("home");
+});
+
+app.get('/logout', function(req, res){
+  delete req.session.user
   res.redirect('/');
-};
+})
+
 //products
 app.post('/products/search', products.search);
 app.get('/products', products.show);
@@ -119,6 +123,7 @@ app.get('/products/profitsPerProduct', products.profitsPerProduct);
 //app.get('/products/search', products.search);
 
 //sales handlebars
+app.post('/sales/search', sales.search);
 app.get('/sales', sales.show);
 app.get('/sales/editSales/:id', sales.get);
 app.post('/sales/update/:id', sales.update);
@@ -128,6 +133,8 @@ app.post('/sales/add', sales.add);
 app.get('/sales/delete/:id', sales.delete);
 
 //purchases handlebars
+app.post('/purchases/search', purchases.search);
+app.get('/purchases/search', purchases.search);
 app.get('/purchases', purchases.show);
 app.get('/purchases/editPurchases/:id', purchases.get);
 app.post('/purchases/update/:id', purchases.update);
@@ -150,6 +157,7 @@ app.get('/categories/leastCategory', categories.leastCategory);
 app.get('/categories/earningsPerCategory', categories.earningsPerCategory);
 
 //Suppliers handlebars
+app.post('/suppliers/search', suppliers.search);
 app.get('/suppliers', suppliers.show);
 app.get('/suppliers/editSuppliers/:id', suppliers.get);
 app.post('/suppliers/update/:id', suppliers.update);

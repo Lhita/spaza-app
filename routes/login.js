@@ -1,36 +1,45 @@
 var bcrypt = require('bcrypt');
 
-exports.login = function(req, res, next) {
-	req.getConnection(function(err, connection) {
-		var input = JSON.parse(JSON.stringify(req.body));
-		var username = req.body.username;
-		var password = req.body.password;
+exports.login = function(req, res, next){
+  req.getConnection(function(error, connection){   
+    var input = JSON.parse(JSON.stringify(req.body));
+    var username = input.username;
+    var password = input.password;
 
-		connection.query('SELECT * FROM users WHERE username =?',username, function(err,users) {
-			//var user = users[0];
-			//if(Password === users[0].password ) {
-			//	console.log('welcome');
-   			//   res.redirect('/home'); 
-			// }else {
-   //           	res.redirect('/login');
-   //               };
+    if(error){
+      return next(error);
+     }
 
-   if (users[0].username === undefined) {
+  connection.query('SELECT  * FROM users WHERE username = ?', username, function(error, users) {
+    var user = users[0];
+    console.log("also user" + user);
+    if(user === undefined){
+      req.flash("info", 'invalid username!');
+      return res.redirect('/');
+      };
 
-        req.flash("message", "invalid username/ password!");
-        return res.redirect("/");
-       };
+  bcrypt.compare(input.password, users[0].password, function(err, pass){     
+    if(err){
+      console.log(err);
+    }
 
-       bcrypt.compare(password, users[0].password, function(err, pass) {
-         	if (pass) {
-           	// check if user is on my database login
-           	req.session.user = users[0].username;
-           	//if the user puts invalid password redirect to home page
-           	return res.redirect("/home");
-        		}else {
-   				}
-   			});
-   		});
-	});
+      console.log(pass);
+      //the user is recognised it will redirect us to the home page.
+      if(pass){
+        req.session.user = username;
+        req.session.role =  user.role;
+        console.log(req.session.role);
+        // req.flash('info', 'Welcome!');
+        return res.redirect('/home');
+        console.log(pass);
+      }
+      else if(password === undefined || user === undefined){
+        res.redirect('/');
+      } else {
+          req.flash('info', 'Incorrect username or Password!');
+          res.redirect('/');
+        };
+      });
+    });
+  });
 };
-		

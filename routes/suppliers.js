@@ -1,3 +1,16 @@
+exports.search = function(req, res, next){
+	req.getConnection(function(err, connection){
+		if(err) return next(err);
+		var searchTerm = '%' + req.body.searchValue + '%';
+		connection.query('SELECT supplier_name FROM suppliers WHERE supplier_name like ?', [searchTerm], function(err, results){
+			if(err) return next(err);
+			res.render('suppliers',{
+				suppliers: results
+			});
+		});
+	});
+};
+
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);

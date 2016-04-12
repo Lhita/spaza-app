@@ -1,3 +1,16 @@
+exports.search = function(req, res, next){
+	req.getConnection(function(err, connection){
+		if (err) return next(err);
+		var searchTerm = '%' + req.body.searchValue + '%';
+		connection.query('SELECT sales.id, products.product_name, DATE_FORMAT(sales.sales_date,"%d/%m/%Y")as sales_date, sales.sales_price, sales.qty FROM sales INNER JOIN products ON products.id = sales.product_id WHERE product_name like ?', [searchTerm], function(err, results){
+			if(err) return next(err);
+			res.render('sales',{
+				sales: results
+			});
+		});
+	});
+};
+
 exports.show = function (req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err) return next(err);
