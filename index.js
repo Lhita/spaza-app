@@ -7,7 +7,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
     bcrypt = require('bcrypt'),
-    flash = require('connect-flash');
+    flash = require('express-flash');
 
     var products = require('./routes/products'),
     sales = require('./routes/sales'),
@@ -114,13 +114,11 @@ app.get('/products/edit/:id', products.get);
 app.post('/products/update/:id', products.update);
 app.get('/products/add', products.showAdd);
 app.post('/products/add', products.add);
-//this should be a post but this is only an illustration of CRUD - not on good practices
 app.get('/products/delete/:id', products.delete);
 app.get('/products/popularProduct', products.popularProduct);
 app.get('/products/leastProduct', products.leastProduct);
 app.get('/products/earningsPerProduct', products.earningsPerProduct);
 app.get('/products/profitsPerProduct', products.profitsPerProduct);
-//app.get('/products/search', products.search);
 
 //sales handlebars
 app.post('/sales/search', sales.search);
@@ -129,7 +127,6 @@ app.get('/sales/editSales/:id', sales.get);
 app.post('/sales/update/:id', sales.update);
 app.get('/sales/add', sales.showAddSales);
 app.post('/sales/add', sales.add);
-
 app.get('/sales/delete/:id', sales.delete);
 
 //purchases handlebars
@@ -140,7 +137,6 @@ app.get('/purchases/editPurchases/:id', purchases.get);
 app.post('/purchases/update/:id', purchases.update);
 app.get('/purchases/add', purchases.showAddPurchases);
 app.post('/purchases/add', purchases.add); 
-
 app.get('/purchases/delete/:id', purchases.delete);  
 
 //category handlebars
@@ -150,7 +146,6 @@ app.get('/categories/editCategories/:id', categories.get);
 app.post('/categories/update/:id', categories.update);
 app.get('/categories/add', categories.showAddCategories);
 app.post('/categories/add', categories.add);
-
 app.get('/categories/delete/:id', categories.delete);
 app.get('/categories/popularCat', categories.popularCat);
 app.get('/categories/leastCategory', categories.leastCategory);
@@ -163,18 +158,9 @@ app.get('/suppliers/editSuppliers/:id', suppliers.get);
 app.post('/suppliers/update/:id', suppliers.update);
 app.get('suppliers/add', suppliers.showAddSuppliers);
 app.post('/suppliers/add', suppliers.add);
-
 app.get('/suppliers/delete/:id', suppliers.delete);
 
 app.get('/users', users.showUsers);
-
-//app.get('/search)
-
-
-//app.get('/users/editUsers/:id', users.get);
-//app.post('/users/update/:id', users.update);
-
-//app.get('users/delete/:id', users.delete);
 
 app.use(errorHandler);
 

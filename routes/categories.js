@@ -1,8 +1,9 @@
 exports.search = function(req, res, next){
 	req.getConnection(function(err, connection){
 		if(err) return next(err);
-		var searchTerm = '%' + req.body.searchValue + '%';
+		var searchTerm = '%' + req.params.value + '%';
 		connection.query('SELECT category_name FROM categories WHERE category_name LIKE ?', [searchTerm], function(err, results){
+			
 			if (err) return next(err);
 			res.render('categories',{
 				categories: results

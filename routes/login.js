@@ -29,14 +29,14 @@ exports.login = function(req, res, next){
         req.session.user = username;
         req.session.role =  user.role;
         console.log(req.session.role);
-        // req.flash('info', 'Welcome!');
+         req.flash('messages', 'Welcome!');
         return res.redirect('/home');
         console.log(pass);
       }
       else if(password === undefined || user === undefined){
         res.redirect('/');
       } else {
-          req.flash('info', 'Incorrect username or Password!');
+          req.flash('messages', 'Incorrect username or Password!');
           res.redirect('/');
         };
       });

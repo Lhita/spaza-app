@@ -1,19 +1,10 @@
 <h1>Products</h1>
 
-<!-- <form action="/products/search" method="POST">
-  <input type="text" class="form-control" placeholder="Search" id="search" name="searchValue">
-  <input type="submit">
-</form> -->
-
 <div id="gradient"></div>
-<form class="searchbox" action="/categories/search" method="POST">
-  <input type="search" placeholder="Search" id="search" />
+<form class="searchbox" action="/products/search" method="POST">
+  <input type="search" placeholder="Search" id="search" name="searchValue" />
   <button type="submit" value="search">&nbsp;</button>
 </form>
-
-<!-- <a href="/products/add">Add product</a> <br> -->
-
-<p><a href="/">Go back</a></p>
 
 <div class="container-fluid">
   <table class="col-xs-7">
@@ -31,7 +22,6 @@
   <tr>
       <td>{{id}}</td>
       <td>{{product_name}}</td>
-      
     
     <td>
       <a href="/products/edit/{{id}}">Edit</a>
@@ -41,12 +31,5 @@
   </tr>
   {{/products}}
  </tbody>
-
- 
-
-{{#no_products}}
-  <p>No products available yet. Add some above.</p>
-{{/no_products}}
-
   </table>
 </div>

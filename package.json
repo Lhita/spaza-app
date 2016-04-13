@@ -6,6 +6,7 @@
   "dependencies": {
     "bcrypt": "^0.8.5",
     "express": "^4.13.3",
+    "express-flash": "0.0.2",
     "express-handlebars": "^2.0.1",
     "express-session": "^1.13.0",
     "gulp": "^3.9.0",
