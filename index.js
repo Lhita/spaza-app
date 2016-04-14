@@ -140,7 +140,7 @@ app.post('/purchases/add', purchases.add);
 app.get('/purchases/delete/:id', purchases.delete);  
 
 //category handlebars
-app.post('/categories/search', categories.search);
+app.get('/categories/search/:searchValue', categories.search);
 app.get('/categories', categories.show);
 app.get('/categories/editCategories/:id', categories.get);
 app.post('/categories/update/:id', categories.update);
@@ -150,6 +150,7 @@ app.get('/categories/delete/:id', categories.delete);
 app.get('/categories/popularCat', categories.popularCat);
 app.get('/categories/leastCategory', categories.leastCategory);
 app.get('/categories/earningsPerCategory', categories.earningsPerCategory);
+app.get('/categories/profitsPerCategory', categories.profitsPerCategory);
 
 //Suppliers handlebars
 app.post('/suppliers/search', suppliers.search);

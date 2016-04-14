@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="Profits">
+		<table class="col-xs-10">
+			<thead>
+				<th>Category Name</th>
+				<th>profits</th>
+			</thead>
+
+			<tbody>
+				{{#profitsPerCategory}}
+				<tr>
+					<td>{{category_name}}</td>
+					<td>R{{profits}}</td>
+				</tr>
+				{{/profitsPerCategory}}
+			</tbody>
+		</table>
+	</div>
+	</body>
+</html>

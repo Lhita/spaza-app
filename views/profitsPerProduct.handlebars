@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="Profits">
+		<table class="col-xs-8">
+			<thead>
+				<th>Product Name</th>
+				<th>Supplier Name</th>
+				<th>profits</th>
+			</thead>
+
+			<tbody>
+				{{#profitsPerProduct}}
+				<tr>
+					<td>{{product_name}}</td>
+					<td>{{supplier_name}}</td>
+					<td>R{{profits}}</td>
+				</tr>
+				{{/profitsPerProduct}}
+			</tbody>
+
+		</table>
+
+</body>
+</html>

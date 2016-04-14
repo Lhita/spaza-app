@@ -77,7 +77,7 @@ exports.profitsPerProduct = function(req, res, next) {
 	req.getConnection(function(err, connection){
 		if (err)
 			return next (err);
-		connection.query('SELECT products.product_name, (sales.sales_price - purchases.stock_price) AS profits FROM sales, purchases, products INNER JOIN products ON products.id = sales.product_id GROUP BY product_name ', [], function(err, results) {
+		connection.query('SELECT product_name, supplier_name, SUM(sales.sales_price - purchases.cost_price) AS profits FROM products, sales, purchases, suppliers WHERE products.id = sales.product_id And sales.product_id = purchases.product_id AND purchases.supplier_id = suppliers.id GROUP BY product_name  ORDER BY profits DESC;', [], function(err, results) {
 			if (err) return next (err);
 			res.render('profitsPerProduct', {
 				profitsPerProduct: results

@@ -1,14 +1,15 @@
 exports.search = function(req, res, next){
 	req.getConnection(function(err, connection){
 		if(err) return next(err);
-		var searchTerm = '%' + req.params.value + '%';
-		connection.query('SELECT category_name FROM categories WHERE category_name LIKE ?', [searchTerm], function(err, results){
+		var searchValue = '%' + req.params.searchValue + '%';
+		connection.query('SELECT category_name FROM categories WHERE category_name LIKE ?', [searchValue], function(err, results){
 			
 			if (err) return next(err);
-			res.render('categories',{
-				categories: results
-			})
-		})
+			res.render('search_categories',{
+				categories: results,
+				layout: false
+			});
+		});
 	})
 };
 
@@ -84,6 +85,19 @@ exports.earningsPerCategory = function(req, res, next) {
 			if (err) return next(err);
 			res.render('earningsPerCategory', {
 				earningsPerCategory: results
+			});
+		});
+	});
+};
+
+exports.profitsPerCategory = function(req, res, next) {
+	req.getConnection(function(err, connection){
+		if (err)
+			return next (err);
+		connection.query('SELECT categories.category_name, SUM( sales.sales_price ) - SUM( purchases.cost_price ) AS profits FROM sales INNER JOIN products ON sales.product_id = products.id INNER JOIN purchases ON sales.product_id = purchases.product_id INNER JOIN categories ON categories.id = products.category_id GROUP BY category_name ORDER BY profits DESC; ', [], function(err, results) {
+			if (err) return next (err);
+			res.render('profitsPerCategory', {
+				profitsPerCategory: results
 			});
 		});
 	});
