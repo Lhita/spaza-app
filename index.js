@@ -108,7 +108,7 @@ app.get('/logout', function(req, res){
 })
 
 //products
-app.post('/products/search', products.search);
+app.get('/products/search/:searchValue', products.search);
 app.get('/products', products.show);
 app.get('/products/edit/:id', products.get);
 app.post('/products/update/:id', products.update);

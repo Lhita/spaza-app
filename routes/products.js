@@ -1,12 +1,13 @@
 exports.search = function(req, res, next){
 	req.getConnection(function(err, connection){
 		if(err) return next(err);
-		var searchTerm = '%' + req.body.searchValue + '%';
-		connection.query('SELECT product_name from products where product_name like ?', [searchTerm], function(err, results) {
+		var searchValue = '%' + req.params.searchValue + '%';
+		connection.query('SELECT id, product_name from products where product_name like ?', [searchValue], function(err, results) {
 			if(err) return next(err);
 		 	
-			res.render('products',{
-				products: results
+			res.render('product_search',{
+				products: results,
+				layout: false
 				 
 			});
 		});
