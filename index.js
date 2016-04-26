@@ -121,7 +121,7 @@ app.get('/products/earningsPerProduct', products.earningsPerProduct);
 app.get('/products/profitsPerProduct', products.profitsPerProduct);
 
 //sales handlebars
-app.post('/sales/search', sales.search);
+app.get('/sales/search/:searchValue', sales.search);
 app.get('/sales', sales.show);
 app.get('/sales/editSales/:id', sales.get);
 app.post('/sales/update/:id', sales.update);
@@ -130,7 +130,7 @@ app.post('/sales/add', sales.add);
 app.get('/sales/delete/:id', sales.delete);
 
 //purchases handlebars
-app.post('/purchases/search', purchases.search);
+app.get('/purchases/search/:searchValue', purchases.search);
 app.get('/purchases/search', purchases.search);
 app.get('/purchases', purchases.show);
 app.get('/purchases/editPurchases/:id', purchases.get);
@@ -153,7 +153,7 @@ app.get('/categories/earningsPerCategory', categories.earningsPerCategory);
 app.get('/categories/profitsPerCategory', categories.profitsPerCategory);
 
 //Suppliers handlebars
-app.post('/suppliers/search', suppliers.search);
+app.get('/suppliers/search/:searchValue', suppliers.search);
 app.get('/suppliers', suppliers.show);
 app.get('/suppliers/editSuppliers/:id', suppliers.get);
 app.post('/suppliers/update/:id', suppliers.update);

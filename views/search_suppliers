@@ -1,0 +1,18 @@
+<table class="col-xs-6">
+	<tr>
+		<th>Id</th>
+		<th>Supplier Name</th>
+	</tr>	
+
+	<tbody>
+		{{#suppliers}}
+		<tr>
+			<td>{{id}}</td>
+			<td>{{supplier_name}}</td>
+		</tr>
+		{{/suppliers}}
+	</tbody>
+	<br>
+	<br>
+	<a href="/suppliers"><button>show All </button></a>	
+</table>	

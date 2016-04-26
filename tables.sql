@@ -26,10 +26,10 @@ CREATE TABLE sales (
 	sales_price int,
 	qty int,
 	product_id int,
+	supplier_id int,
 	primary key(id),
 	FOREIGN KEY(product_id) REFERENCES products(id)
-
-	);
+);
 
 
 DROP TABLE IF EXISTS `suppliers`;

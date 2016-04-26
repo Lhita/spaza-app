@@ -1,11 +1,12 @@
 exports.search =function(req, res, next){
 	req.getConnection(function(err, connection){
 		if(err) return next(err);
-		var searchTerm = '%' + req.body.searchValue + '%';
-		connection.query('SELECT products.product_name, DATE_FORMAT(purchases.stock_date,"%Y/%m/%d")as stock_date, purchases.cost_price, purchases.Qty, suppliers.supplier_name FROM purchases INNER JOIN products ON products.id = purchases.product_id  INNER JOIN suppliers ON suppliers.id = purchases.supplier_id WHERE product_name like ?', [searchTerm], function(err, results) {
+		var searchTerm = '%' + req.params.searchValue + '%';
+		connection.query('SELECT purchases.id, products.product_name, DATE_FORMAT(purchases.stock_date,"%Y/%m/%d")as stock_date, purchases.cost_price, purchases.Qty, suppliers.supplier_name FROM purchases INNER JOIN products ON products.id = purchases.product_id  INNER JOIN suppliers ON suppliers.id = purchases.supplier_id WHERE product_name like ?', [searchTerm], function(err, results) {
 			if(err) return next(err);
-			res.render('purchases',{
-			purchases: results
+			res.render('search_purchases',{
+			purchases: results,
+			layout: false
 			});
 		});	
 	});
