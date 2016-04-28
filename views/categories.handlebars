@@ -10,18 +10,20 @@
 <div id="gradient"></div>
   <input type="search" placeholder="Search" name="searchValue" id="categorySearch"/>
   
-<div class="container">
+<div class="CSSTableGenerator">
   <table class="col-xs-10" id="categories">
     <tr>
       <thead>
-        <th>Category Name</th>
+        <td>Id</td>
+        <td>Category Name</td>
+        <td>Edit / Delete</td>
       </thead>
     </tr>
 
     <tbody>
       {{#categories}}
         <tr>
-
+<td>{{id}}</td>
 <td>{{category_name}}</td>
 
 

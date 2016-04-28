@@ -1,4 +1,4 @@
-INSERT INTO categories (category_name) VALUES('Drairy');
+INSERT INTO categories (category_name) VALUES('Dairy');
 INSERT INTO categories (category_name) VALUES('Grain');
 INSERT INTO categories (category_name) VALUES('Can');
 INSERT INTO categories (category_name) VALUES('ColdDrinks');

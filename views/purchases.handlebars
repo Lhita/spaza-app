@@ -24,21 +24,24 @@
 
 </form>
  -->
+
 <div id="gradient"></div>
 <input type="search" placeholder="Search" id="purchaseSearch" name="searchValue"/>
 
 
 <!-- <h1>Purchases Records</h1> --> 
 
-<div class="container-fluid">
+<div class="CSSTableGenerator">
   <table class="col-xs-12" id="purchases">
     <tr>
       <thead>
-        <th>Product Name</th>
-        <th>Stock_date</th>
-        <th>Price</th>
-        <th>Quantity</th> 
-        <th>Supplier_name</th> 
+        
+        <td>Product Name</td>
+        <td>Stock_date</td>
+        <td>Price</td>
+        <td>Quantity</td> 
+        <td>Supplier_name</td> 
+        <td>Edit / Delete</td>
 
         
 
@@ -49,6 +52,7 @@
 
       {{#purchases}}
       <tr>
+
         <td>{{product_name}}</td>
         <td>{{stock_date}}</td>
         <td>{{cost_price}}</td>
