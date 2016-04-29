@@ -1,7 +1,7 @@
 $(document).ready(function(){
-    $("#searchTerm").keyup(function(){
-        var searchValue = $("#searchTerm").val();
-        console.log(searchValue);
+    $("#productSearch").keyup(function(){
+        var searchValue = $("#productSearch").val();
+        //console.log(searchValue);
         $.get("/products/search/" + searchValue, function(results){
             $("#products").html(results)
         });

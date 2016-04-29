@@ -1,10 +1,10 @@
 
 <div id="gradient"></div>
 
-  <input type="search" placeholder="Search" id="searchTerm" name="searchValue" />
+<input type="search" placeholder="Search" id="productSearch" name="searchValue" />
 
 <div class="CSSTableGenerator" >
-  <table class="col-xs-7">
+  <table class="col-xs-7" id="products">
     <tr>
       <thead>
         <td>Id</td>
@@ -14,20 +14,19 @@
       </thead>
     </tr>
 
-<tbody>
-  {{#products}}
-  <tr>
-      <td>{{id}}</td>
-      <td>{{product_name}}</td>
+    <tbody>
+      {{#products}}
+      <tr>
+        <td>{{id}}</td>
+        <td>{{product_name}}</td>
     
-    <td>
-      <a href="/products/edit/{{id}}">Edit</a>
-      <a href="/products/delete/{{id}}">Delete</a>
-    </td>
+        <td>
+          <a href="/products/edit/{{id}}">Edit</a>
+          <a href="/products/delete/{{id}}">Delete</a>
+        </td>
 
-  </tr>
-  {{/products}}
- </tbody>
+      </tr>
+      {{/products}}
+    </tbody>
   </table>
-</div>
 </div>

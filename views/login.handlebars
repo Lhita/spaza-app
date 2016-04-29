@@ -4,13 +4,19 @@
 <style type="text/css">
 * {font-family: calibri;}
 
-body {background : #f1f1f1;margin: 10% 40%;width: 400px;}
+body {
+  background : #f1f1f1;margin: 10% 40%;width: 400px;
+  background-color: blue;
+}
 
 input {
   box-shadow: 2px 2px 5px #808080;
 }
 
 h1 {font-size: 40px;color: #aaa;}
+.box{border-radius: 5px solid black;
+  border: 10px;
+}
 
 .login-button {
   background: #008080;
@@ -36,6 +42,7 @@ a{
 }
 </style>
 </head>
+<div class="box">
 <h1>login</h1>
 
 <form class="" action='/login' method="post">
@@ -46,5 +53,6 @@ a{
     <p> don't have an account? signup <a href="/signUp">here </a> </p>
     {{messages.messages}}
 </form>
+</div>
       
 </html>

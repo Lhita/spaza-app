@@ -76,7 +76,10 @@ app.get('/', function(req, res) {
   });
 });
 
-app.post('/login', login.login);
+app.post('/login', function(req, res){
+  req.session.user = 'nelisa';
+  res.redirect('/home');
+});
 
 // app.get("/login", function(req, res){
 //     res.render("home", {});
@@ -91,14 +94,14 @@ app.get('/signUp', function(req, res){
 app.post('/signUp', signUp.signUp);
 
 
-// var checkUser = function(req, res, next){
-//   if(req.session.user){
-//   return next();
-// }
-//   res.redirect('/');
-// };
+var checkUser = function(req, res, next){
+  if(req.session.user){
+    return next();
+}
+  res.redirect('/');
+};
 
-app.get("/home", function(req, res){
+app.get("/home",checkUser, function(req, res){
     res.render("home");
 });
 

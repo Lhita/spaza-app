@@ -3,8 +3,8 @@ exports.search = function(req, res, next){
 		if(err) return next(err);
 		var searchValue = '%' + req.params.searchValue + '%';
 		connection.query('SELECT id, product_name from products where product_name like ?', [searchValue], function(err, results) {
-			if(err) return next(err);
-		 	
+			if(err) 
+				return next(err);
 			res.render('product_search',{
 				products: results,
 				layout: false
