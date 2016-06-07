@@ -50,10 +50,10 @@ exports.add = function (req, res, next) {
 		var input = JSON.parse(JSON.stringify(req.body));
 
 		var data = {
-			product_id :input.product_id,
-      		sales_date : input.sales_date,
-      		sales_price : input.sales_price,
-      		qty : input.qty 		
+			employee_id :input.employee_id,
+      		challenge : input.challenge,
+      		reps : input.reps,
+      		rewards : input.rewards 		
   		};
 
 		connection.query('insert into sales set ?', data, function(err, results) {
@@ -65,9 +65,11 @@ exports.add = function (req, res, next) {
 
 exports.get = function(req, res, next){
 	var id = req.params.id;
+
 	req.getConnection(function(err, connection){
-		connection.query('SELECT * FROM sales WHERE id = ?', [ id], function(err,rows){
-        connection.query('SELECT * FROM products',  function(err, products) {
+	connection.query('SELECT * FROM sales WHERE id = ?', [id], function(err,rows){
+       
+       connection.query('SELECT * FROM products',  function(err, products) {
 			if(err) return next(err);
 			res.render('editSales',{page_title:"Edit Customers - Node.js", 
 			data : rows[0],

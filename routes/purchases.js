@@ -65,37 +65,40 @@ exports.add = function(req, res, results) {
 };
 
 exports.get = function(req, res, next) {
+
 	var id = req.params.id;
+
 	req.getConnection(function(err, connection){
 		connection.query('SELECT * FROM purchases WHERE id = ?', [id], function(err,rows){
+        
         	connection.query('SELECT * FROM products',  function(err, products) {
+        		
         		connection.query('SELECT * FROM suppliers',  function(err, suppliers) {
-					if(err) return next(err);
-
+					if(err) 
+						return next(err);
 					res.render('editPurchases',{page_title:"Edit Customers - Node.js", 
 					data : rows[0],
-					
 					products : products,
 					suppliers : suppliers
 					});
 				});
 			});
-        });
-
+		});
 	});
 };
+
 
 exports.update = function(req, res, next){
 
 	var data = JSON.parse(JSON.stringify(req.body));
 	var id = req.params.id;
-	/*var data = {
+	// var data = {
 			
-		product_id :input.product_id,
-      	stock_date : input.stock_date,
-      	cost_price : input.cost_price,
-      	qty : input.qty 		
-  	};*/
+	// 	product_id :input.product_id,
+ //      	stock_date : input.stock_date,
+ //      	cost_price : input.cost_price,
+ //      	qty : input.qty 		
+ //  	};
 
   	req.getConnection(function(err, connection){
 		connection.query('UPDATE purchases SET ? WHERE id = ?', [data, id], function(err, rows){
@@ -105,6 +108,7 @@ exports.update = function(req, res, next){
     	});
     });
 };
+
 
 exports.delete = function(req, res, next){
 	var id = req.params.id;

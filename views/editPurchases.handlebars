@@ -1,9 +1,8 @@
 <h1>Edit Purchases</h1>
 
 {{#data}}
-<form action="/purchases/update/{{id}}" method="POST">
+<form action="'/purchases/update/{{id}}" method="POST">
 
-	
 	Stock_date : <input type="date" name="sales_date" value="{{sales_date}}">
 	Stock_price : <input type="number" name="sales_price" value="{{sales_price}}">
 	Quantity : <input type="number" name="qty" value="{{qty}}">
@@ -18,7 +17,7 @@
 <select name ="supplier_id">
 	{{#each suppliers}}
 		<option value ="{{id}}">{{supplier_name}}</option>
-	{{/suppliers}}
+	{{/each}}
 </select>
 
 	<input type="submit">

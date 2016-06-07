@@ -1,25 +1,24 @@
 <h1>Add Sales</h1>
- 
-<form action ="/sales/add" method ="POST">
-  
-  <select name="product_id">
 
+<form action ="/sales/add" method ="POST">
+  <select name="product_id">
     {{#products}}
      <option value="{{id}}">{{product_name}}</option>
     {{/products}}
-   </select>
+  </select>
 
-  sale_date : <input type="date" name="sales_date"></input>
-  sale_price : <input type="number" name="sales_price"></input>
-  Quantity:<input type="number" name="qty"></input>
-  
+  Date : <input type="date" name="sales_Date" >
+  Price : <input type="number" name="sales_price" >
+  Quantity: <input type="number" name="qty" >
+
 	<input type ="submit">
 
 </form>
 
+<br>
 <div id="gradient"></div>
   <input type="search" placeholder="Search" id="saleSearch" name="searchValue"/>
- 
+
 
 <!-- <h1>Sales Records</h1>  -->
 
@@ -44,7 +43,7 @@
 <td>{{sales_date}}</td>
 <td>{{qty}}</td>
 
-<td> 
+<td>
   <a href="/sales/editSales/{{id}}">Edit</a>
   <a href="/sales/delete/{{id}}">Delete</a>
 </td>

@@ -74,13 +74,23 @@ exports.update = function(req, res, next){
 	});
 };
 
+// exports.delete = function(req, res, next){
+// 	var id = req.params.id;
+// 	req.getConnection(function(err, connection){
+// 		connection.query('DELETE FROM suppliers WHERE id = ?', [id], function(err){
+// 			if(err){
+// 				//console.log("Error Selecting : %s ",err );
+// 			}
+// 			res.redirect('/suppliers');
+// 		});
+// 	});
+// };
+
 exports.delete = function(req, res, next){
 	var id = req.params.id;
 	req.getConnection(function(err, connection){
-		connection.query('DELETE FROM suppliers WHERE id = ?', [id], function(err){
-			if(err){
-				//console.log("Error Selecting : %s ",err );
-			}
+		connection.query('DELETE FROM suppliers WHERE id = ?', [id], function(err,rows){
+			if(err) return next(err);
 			res.redirect('/suppliers');
 		});
 	});

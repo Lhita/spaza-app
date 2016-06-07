@@ -142,6 +142,7 @@ exports.update = function(req, res, next){
 		connection.query('UPDATE categories SET ? WHERE Id = ?', [data, id], function(err, rows){
 			if (err){
 		       console.log("Error Updating : %s ",err );
+		       return next(err);
 			}
 		    res.redirect('/categories');
 		});
